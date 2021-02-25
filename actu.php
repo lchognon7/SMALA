@@ -23,7 +23,7 @@ if(!isset($_SESSION['user_role'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="format-detection" content="telephone=no">
     <!-- Links -->
-    <link rel="stylesheet" type="text/css" href="src/css/style.css"/>
+    <?php echo '<link rel="stylesheet" href="src/css/style.css?' . filemtime('src/css/style.css') . '" />'; ?>
 </head>
 <body>
     <nav>
@@ -47,24 +47,33 @@ if(!isset($_SESSION['user_role'])){
             </ul>
         </div>
     </nav>
-    <main>
+    <div class="nav_overlay"></div>
+    <main id="main_actu">
         <form action="src/php/upload.php" method="POST" enctype="multipart/form-data">
+            <label for="fileToUpload"><img src="assets/img/plus.svg" alt="ajouter une image"></label>
             <input type="file" name="fileToUpload" id="fileToUpload">
             <input type="text" name="img_titre" id="img_titre" placeholder="Titre de l'image" required>
             <input type="submit" value="Partager" name="submit">
         </form>
+        <div id="container_div_img">
         <?php
         try {
             $pdo = new PDO(DB_DRIVER . ":host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=" . DB_CHARSET, DB_LOGIN, DB_PASS, DB_OPTIONS);
-            $requete = "SELECT * FROM `img`;";
+            $requete = "SELECT img_url, img_titre, img_date_ajout, user_pseudo FROM `img`
+                        FULL JOIN `user` ON `user_id` = `img_user_id`;";
             $prepare = $pdo->prepare($requete);
             $prepare->execute();
             $res = $prepare->rowCount();
             $resultat = $prepare->fetchAll();
-            foreach($resulat as $key => $value){
+            $resultat = array_reverse($resultat);
+            foreach($resultat as $key => $value){
+                $date = date_create($value['img_date_ajout']);
+                $date = date_format($date, 'd/m/Y \à H:i');
                 ?>
                 <div class="div_img">
-                    
+                    <img src="<?php echo($value['img_url']);?>" alt="<?php echo($value['img_titre']);?>">
+                    <p><b><?php echo($value['img_titre'])?></b> - <span><?php echo($value['user_pseudo']);?></span></p>
+                    <p>ajoutée le <?php echo($date);?></p>
                 </div>
                 <?php
             }
@@ -72,6 +81,7 @@ if(!isset($_SESSION['user_role'])){
             exit("❌🙀❌ OOPS :\n" . $e->getMessage());
           }
         ?>
+        </div>
     </main>
     <script src="src/js/app.js"></script>
 </body>

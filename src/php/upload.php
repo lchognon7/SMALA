@@ -41,6 +41,7 @@ if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg
 // On vérifie si toutes les conditions sont remplies, cf $uploadOk == 1
 if ($uploadOk == 0) {
   echo "<p>Votre image n'a pas été upload.</p>";
+  echo"<a href='../../actu.php'>Retour à l'accueil</a>";
 // Si tout va bien on upload l'image
 } else {
   if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
@@ -62,7 +63,7 @@ if ($uploadOk == 0) {
       $res = $prepare->rowCount();
   
       if ($res == 1) {
-        echo "<p>Message à afficher en cas de réussite</p>";
+        header("Location: ../../actu.php");
       }
     } catch (PDOException $e) {
       exit("❌🙀❌ OOPS :\n" . $e->getMessage());

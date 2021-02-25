@@ -15,13 +15,13 @@ include('src/php/connectDB.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="format-detection" content="telephone=no">
     <!-- Links -->
-    <link rel="stylesheet" type="text/css" href="src/css/style.css"/>
+    <?php echo '<link rel="stylesheet" href="src/css/style.css?' . filemtime('src/css/style.css') . '" />'; ?>
 </head>
 <body>
     <nav>
         <h1>SMALA</h1>
     </nav>
-
+    <div class="nav_overlay"></div>
     <main id="main_connexion">
         <?php
         try {
@@ -41,7 +41,7 @@ include('src/php/connectDB.php');
                     <label for="user_mail_creation_admin">Ton adresse email</label>
                     <input type="email" name="user_mail_creation_admin" required>
                     <label for="user_mdp_creation_admin">Ton mot de passe</label>
-                    <input type="password" name="user_mdp_creation_admin" required>
+                    <input type="password" name="user_mdp_creation_admin" pattern="^(?=.*[$@%*^&\#+_-.!;])(?=.*[A-Z])(?=.*\d)(?=.*[a-z]).{8,}$" title="Il doit faire au moins 8 caractères et contenir au moins une minuscule, une majuscule, un chiffre, un caractère spécial." required>
                     <input type="submit" value="Créer mon compte" name="btn_submit_creation_admin">
                 </form>
                 <?php

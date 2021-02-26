@@ -15,6 +15,114 @@ $prepare = $pdo->prepare($requete);
 $prepare->execute();
 $img = $prepare->fetchAll();
 $img = array_reverse($img);
+
+if(isset($_POST['user_mod_admin'])){
+    $user_id = $_POST['user_id'];
+    $user_mail = $_POST['user_mail'];
+    $user_pseudo = $_POST['user_pseudo'];
+    $user_mdp = $_POST['user_mdp'];
+    $user_role = $_POST['user_role'];
+    try {
+      $pdo = new PDO(DB_DRIVER . ":host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=" . DB_CHARSET, DB_LOGIN, DB_PASS, DB_OPTIONS);
+      $requete = "UPDATE `user` SET `user_mail` = :user_mail, `user_pseudo` = :user_pseudo, `user_mdp` = :user_mdp, `user_role` = :user_role  WHERE `user_id` = :user_id;";
+      $prepareImg = $pdo->prepare($requete);
+      $prepareImg->execute(array(
+        ':user_mail' => $user_mail,
+        ':user_pseudo' => $user_pseudo,
+        ':user_mdp' => $user_mdp,
+        ':user_role' => $user_role,
+        ':user_id' => $user_id
+      ));
+      $res = $prepareImg->rowCount();
+  
+      if ($res == 1) {
+        header("Location: admin.php");
+        exit;
+      }
+    } 
+    catch (PDOException $e) {
+      exit("❌🙀❌ OOPS :\n" . $e->getMessage());
+    }
+}
+if(isset($_POST['user_supr_admin'])){
+    $user_id = $_POST['user_id'];
+    try {
+    $pdo = new PDO(DB_DRIVER . ":host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=" . DB_CHARSET, DB_LOGIN, DB_PASS, DB_OPTIONS);
+    $requete = "SELECT `img_url` FROM `img` WHERE `img_user_id` = :img_user_id;";
+    $prepare = $pdo->prepare($requete);
+    $prepare->execute(array(
+        ':img_user_id' => $user_id
+    ));
+    $res = $prepare->rowCount();
+    $imgSupr = $prepare->fetchAll();
+    if($res !== 0){
+        foreach($imgSupr as $key => $value){
+            unlink($value['img_url']);
+        }
+        $requete = "DELETE FROM `img` WHERE `img_user_id` = :img_user_id;";
+        $prepare = $pdo->prepare($requete);
+        $prepare->execute(array(
+            ':img_user_id' => $user_id
+        ));
+        $requete = "DELETE FROM `user` WHERE `user_id` = :user_id;";
+        $prepare = $pdo->prepare($requete);
+        $prepare->execute(array(
+            ':user_id' => $user_id
+        ));
+        header('Location: admin.php');
+    }
+
+    } 
+    catch (PDOException $e) {
+        exit("❌🙀❌ OOPS :\n" . $e->getMessage());
+    }
+}
+
+if(isset($_POST['img_mod'])){
+    $img_id = $_POST['img_id'];
+    $img_titre = $_POST['img_titre'];
+    try {
+        $pdo = new PDO(DB_DRIVER . ":host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=" . DB_CHARSET, DB_LOGIN, DB_PASS, DB_OPTIONS);
+        $requete = "UPDATE `img` SET `img_titre` = :img_titre WHERE `img_id` = :img_id;";
+        $prepareImg = $pdo->prepare($requete);
+        $prepareImg->execute(array(
+          ':img_id' => $img_id,
+          ':img_titre' => $img_titre
+        ));
+        $res = $prepareImg->rowCount();
+    
+        if ($res == 1) {
+          header("Location: admin.php");
+          exit;
+        }
+      } 
+      catch (PDOException $e) {
+        exit("❌🙀❌ OOPS :\n" . $e->getMessage());
+      }
+}
+
+if(isset($_POST['img_supr'])){
+    $img_id = $_POST['img_id'];
+    $img_url = $_POST['img_url'];
+    try {
+        $pdo = new PDO(DB_DRIVER . ":host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=" . DB_CHARSET, DB_LOGIN, DB_PASS, DB_OPTIONS);
+        $requete = "DELETE FROM `img` WHERE `img_id` = :img_id;";
+        $prepareDel = $pdo->prepare($requete);
+        $prepareDel->execute(array(
+          ':img_id' => $img_id
+        ));
+        $res = $prepareDel->rowCount();
+    
+        if ($res == 1) {
+            unlink($img_url);
+          header("Location: admin.php");
+          exit;
+        }
+      } 
+      catch (PDOException $e) {
+        exit("❌🙀❌ OOPS :\n" . $e->getMessage());
+      }
+}
 ?>
 
 <!DOCTYPE html>
@@ -32,6 +140,8 @@ $img = array_reverse($img);
     <meta name="format-detection" content="telephone=no">
     <!-- Links -->
     <?php echo '<link rel="stylesheet" href="src/css/style.css?' . filemtime('src/css/style.css') . '" />'; ?>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 
 <body>
@@ -64,7 +174,6 @@ $img = array_reverse($img);
             </ul>
         </div>
     </nav>
-    <div class="nav_overlay"></div>
     <main id="main_admin">
         <h2>Ajouter un utilisateur</h2>
         <form action="admin.php" method='POST'>
@@ -89,7 +198,7 @@ $img = array_reverse($img);
             if (isset($_POST['submit'])) {
                 $user_pseudo = $_POST['pseudo'];
                 $user_mail = $_POST['mail'];
-                $user_mdp = $_POST['mdp'];
+                $user_mdp = password_hash($_POST['mdp'], PASSWORD_DEFAULT);
                 $user_role = $_POST['role'];
 
                 $requete = "INSERT INTO `user` (`user_pseudo`, `user_mail`, `user_mdp`, `user_role`)
@@ -104,7 +213,7 @@ $img = array_reverse($img);
                 $resultat = $prepare->rowCount();
 
                 if ($resultat == 1) {
-                    echo "<p>Le nouveau compte " . htmlspecialchars($user_pseudo) . " a bien été créé.</p>";
+                    header('Location: admin.php');
                 } else {
                     echo "<p>Une erreur s'est produite. Le nouveau compte " . htmlspecialchars($user_pseudo) . " n'a pas pu être créé.</p>";
                 }
@@ -124,20 +233,21 @@ $img = array_reverse($img);
                 <?php
                     foreach($user as $key => $value){
                         ?>
-                        <div class="<?php echo($value['user_pseudo']);?>">
+                        <div class="<?php echo(htmlentities($value['user_pseudo'], ENT_QUOTES));?>">
                             <form action="admin.php" method="POST">
-                                <p><?php echo($value['user_pseudo']);?></p>
+                                <p><?php echo(htmlentities($value['user_pseudo'], ENT_QUOTES));?></p>
                                 <label for="user_pseudo">Pseudo</label>
-                                <input type="text" name="user_pseudo" id="user_pseudo" value="<?php echo($value['user_pseudo']);?>" required>
+                                <input type="text" name="user_pseudo" id="user_pseudo" value="<?php echo(htmlentities($value['user_pseudo'], ENT_QUOTES));?>" required>
                                 <label for="user_mail">Email</label>
-                                <input type="text" name="user_mail" id="user_mail" value="<?php echo($value['user_mail']);?>" required>
+                                <input type="text" name="user_mail" id="user_mail" value="<?php echo(htmlentities($value['user_mail'], ENT_QUOTES));?>" required>
                                 <label for="user_mdp">Mot de passe</label>
-                                <input type="text" name="user_mdp" id="user_mdp" value="<?php echo($value['user_mdp']);?>" required>
+                                <input type="text" name="user_mdp" id="user_mdp" required>
                                 <label for="user_role">Rôle</label>
                                 <select name="user_role" id="user_role" required>
                                     <option value="0">Utilisateur</option>
                                     <option value="1">Administrateur</option>
                                 </select>
+                                <input type="hidden" name="user_id" value="<?php echo(htmlentities($value['user_id'], ENT_QUOTES));?>" required>
                                 <input type="submit" name="user_mod_admin" value="modifier">
                                 <input type="submit" name="user_supr_admin" value="supprimer">
                             </form>
@@ -157,13 +267,14 @@ $img = array_reverse($img);
                 <?php
                     foreach($img as $key => $value){
                         ?>
-                        <div class="<?php echo($value['img_titre']);?>">
+                        <div class="<?php echo(htmlentities($value['user_pseudo'], ENT_QUOTES));?>">
                             <form action="admin.php" method="POST">
-                                <p><?php echo($value['img_titre']);?> - <span><?php echo($value['user_pseudo']);?></span></p>
-                                <img src="<?php echo($value['img_url']);?>" alt="<?php echo($value['img_titre']);?>">
+                                <p><?php echo(htmlentities($value['img_titre'], ENT_QUOTES));?> - <span><?php echo(htmlentities($value['user_pseudo'], ENT_QUOTES));?></span></p>
+                                <img src="<?php echo(htmlentities($value['img_url'], ENT_QUOTES));?>" alt="<?php echo(htmlentities($value['img_titre'], ENT_QUOTES));?>">
                                 <label for="img_titre">Titre</label>
-                                <input type="text" name="img_titre" value="<?php echo($value['img_titre']);?>" required>
-                                <input type="hidden" name="img_id" value="<?php echo($value['img_id']);?>" required>
+                                <input type="text" name="img_titre" value="<?php echo(htmlentities($value['img_titre'], ENT_QUOTES));?>" required>
+                                <input type="hidden" name="img_id" value="<?php echo(htmlentities($value['img_id'], ENT_QUOTES));?>" required>
+                                <input type="hidden" name="img_url" value="<?php echo(htmlentities($value['img_url'], ENT_QUOTES));?>" required>
                                 <input type="submit" name="img_mod" value="modifier">
                                 <input type="submit" name="img_supr" value="supprimer">
                             </form>

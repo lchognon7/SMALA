@@ -16,12 +16,13 @@ include('src/php/connectDB.php');
     <meta name="format-detection" content="telephone=no">
     <!-- Links -->
     <?php echo '<link rel="stylesheet" href="src/css/style.css?' . filemtime('src/css/style.css') . '" />'; ?>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 <body>
     <nav>
         <h1>SMALA</h1>
     </nav>
-    <div class="nav_overlay"></div>
     <main id="main_connexion">
         <?php
         try {
@@ -49,7 +50,7 @@ include('src/php/connectDB.php');
                 if(isset($_POST['btn_submit_creation_admin'])){
                     $user_pseudo_creation_admin = $_POST['user_pseudo_creation_admin'];
                     $user_mail_creation_admin = $_POST['user_mail_creation_admin'];
-                    $user_mdp_creation_admin = $_POST['user_mdp_creation_admin'];
+                    $user_mdp_creation_admin = password_hash($_POST['user_mdp_creation_admin'], PASSWORD_DEFAULT);
                     try {
                     $pdo = new PDO(DB_DRIVER . ":host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=" . DB_CHARSET, DB_LOGIN, DB_PASS, DB_OPTIONS);
                     $requete = "INSERT INTO `user` (`user_pseudo`, `user_mail`, `user_mdp`, `user_role`)
@@ -110,7 +111,7 @@ include('src/php/connectDB.php');
                         ));
                         $res = $prepare->rowCount();
                         $resultat = $prepare->fetch();
-                        if($resultat['user_mdp'] == $user_mdp_connexion){
+                        if(password_verify($user_mdp_connexion, $resultat['user_mdp'])){
                             if($resultat['user_role'] == 0){
                                 $_SESSION['user_role'] = $resultat['user_role'];
                                 $_SESSION['user_id'] = $resultat['user_id'];

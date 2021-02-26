@@ -2,11 +2,6 @@
 include('src/php/connectDB.php');
 if(!isset($_SESSION['user_role'])){
     header('Location: index.php');
-} else {
-    echo('Bienvenue sur la page actu');
-    echo('<a href="src/php/logout.php">Déconnexion</a>');
-    echo("<p>Role de la session (1 admin / 0 utilisateur : ".$_SESSION['user_role']."</p>");
-    echo("<p>Id de l'utilisateur : ".$_SESSION['user_id']."</p>");
 }
 ?>
 
@@ -24,6 +19,8 @@ if(!isset($_SESSION['user_role'])){
     <meta name="format-detection" content="telephone=no">
     <!-- Links -->
     <?php echo '<link rel="stylesheet" href="src/css/style.css?' . filemtime('src/css/style.css') . '" />'; ?>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 <body>
     <nav>
@@ -47,7 +44,6 @@ if(!isset($_SESSION['user_role'])){
             </ul>
         </div>
     </nav>
-    <div class="nav_overlay"></div>
     <main id="main_actu">
         <form action="src/php/upload.php" method="POST" enctype="multipart/form-data">
             <label for="fileToUpload"><img src="assets/img/plus.svg" alt="ajouter une image"></label>
@@ -71,9 +67,9 @@ if(!isset($_SESSION['user_role'])){
                 $date = date_format($date, 'd/m/Y \à H:i');
                 ?>
                 <div class="div_img">
-                    <img src="<?php echo($value['img_url']);?>" alt="<?php echo($value['img_titre']);?>">
-                    <p><b><?php echo($value['img_titre'])?></b> - <span><?php echo($value['user_pseudo']);?></span></p>
-                    <p>ajoutée le <?php echo($date);?></p>
+                    <img src="<?php echo(htmlentities($value['img_url'], ENT_QUOTES));?>" alt="<?php echo(htmlentities($value['img_titre'], ENT_QUOTES));?>">
+                    <p><b><?php echo(htmlentities($value['img_titre'], ENT_QUOTES))?></b> - <span><?php echo(htmlentities($value['user_pseudo'], ENT_QUOTES));?></span></p>
+                    <p>ajoutée le <?php echo(htmlentities($date, ENT_QUOTES));?></p>
                 </div>
                 <?php
             }

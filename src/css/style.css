@@ -11,6 +11,11 @@ html {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+body {
+  display: grid;
+  place-items: center;
+}
+
 nav {
   position: fixed;
   top: 0;
@@ -20,11 +25,9 @@ nav {
   display: grid;
   grid-template-columns: auto 1fr auto;
   place-items: center;
-  box-shadow: 0 1px 1px rgba(0,0,0,0.11), 
-  0 2px 2px rgba(0,0,0,0.11), 
-  0 4px 4px rgba(0,0,0,0.11), 
-  0 6px 8px rgba(0,0,0,0.11),
-  0 8px 16px rgba(0,0,0,0.11);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.11), 0 2px 2px rgba(0, 0, 0, 0.11),
+    0 4px 4px rgba(0, 0, 0, 0.11), 0 6px 8px rgba(0, 0, 0, 0.11),
+    0 8px 16px rgba(0, 0, 0, 0.11);
 }
 /* PROUT le retour */
 nav > h1 {
@@ -106,11 +109,9 @@ nav > #btn_menu > input:checked ~ span:nth-last-child(2) {
   -webkit-font-smoothing: antialiased;
   transform-origin: 0% 0%;
   transform: none;
-  box-shadow: 0 1px 1px rgba(0,0,0,0.11), 
-              0 2px 2px rgba(0,0,0,0.11), 
-              0 4px 4px rgba(0,0,0,0.11), 
-              0 6px 8px rgba(0,0,0,0.11),
-              0 8px 16px rgba(0,0,0,0.11);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.11), 0 2px 2px rgba(0, 0, 0, 0.11),
+    0 4px 4px rgba(0, 0, 0, 0.11), 0 6px 8px rgba(0, 0, 0, 0.11),
+    0 8px 16px rgba(0, 0, 0, 0.11);
   transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
 }
 nav > #btn_menu a {
@@ -130,631 +131,1322 @@ nav > #btn_menu > input:checked ~ ul {
   transform: translate(-100%, 0);
 }
 
-main {
-  max-width: 100vw;
-  margin-top: 5vh;
-  min-height: 95vh;
-  display: grid;
-  place-items: center;
-  color: #383838;
-}
+@media (max-width: 767.9px) {
+  main {
+    margin-top: 5rem;
+    max-width: 100vw;
+    min-height: 95vh;
+    display: grid;
+    place-items: center;
+    color: #383838;
+  }
 
-/* CONNEXION CONNEXION CONNEXION CONNEXION CONNEXION*/
+  /* CONNEXION CONNEXION CONNEXION CONNEXION CONNEXION*/
 
-#main_connexion {
-  margin-top: 0;
-}
+  #main_connexion {
+    margin-top: 0;
+  }
 
-#main_connexion > h1 {
-  margin-top: 2rem;
-  font-size: 2.5rem;
-  text-transform: uppercase;
-}
+  #main_connexion > h1 {
+    margin-top: 2rem;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+  }
 
-#main_connexion > p {
-  font-size: 1.7rem;
-  margin: 2rem;
-  text-align: center;
-}
+  #main_connexion > p {
+    font-size: 1.7rem;
+    margin: 2rem;
+    text-align: center;
+  }
 
-#main_connexion > form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-self: center;
-}
+  #main_connexion > form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+  }
 
-#main_connexion > form > label {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-}
+  #main_connexion > form > label {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
 
-#main_connexion > form > input[type="text"],
-#main_connexion > form > input[type="email"],
-#main_connexion > form > input[type="password"] {
-  margin-bottom: 3rem;
-  outline: none;
-  border: 1px #383838 solid;
-  width: 25rem;
-  font-size: 2rem;
-  color: #383838;
-  text-align: center;
-}
+  #main_connexion > form > input[type="text"],
+  #main_connexion > form > input[type="email"],
+  #main_connexion > form > input[type="password"] {
+    margin-bottom: 3rem;
+    outline: none;
+    border: 1px #383838 solid;
+    width: 25rem;
+    font-size: 2rem;
+    color: #383838;
+    text-align: center;
+  }
 
-#main_connexion > form > input[type="password"] {
-  margin-bottom: 6rem;
-}
+  #main_connexion > form > input[type="password"] {
+    margin-bottom: 6rem;
+  }
 
-#main_connexion > form > input[type="submit"] {
-  height: 4rem;
-  width: 20rem;
-  border: none;
-  background-color: #383838;
-  text-transform: uppercase;
-  color: white;
-  font-size: 1.7rem;
-  font-weight: 700;
-  border-radius: 1rem;
-  place-self: center;
-  transition: background-color 0.3s;
-}
+  #main_connexion > form > input[type="submit"] {
+    height: 4rem;
+    width: 20rem;
+    border: none;
+    background-color: #383838;
+    text-transform: uppercase;
+    color: white;
+    font-size: 1.7rem;
+    font-weight: 700;
+    border-radius: 1rem;
+    place-self: center;
+    transition: background-color 0.3s;
+  }
 
-#main_connexion > form > input[type="submit"]:active {
-  background-color: #454545;
-}
+  #main_connexion > form > input[type="submit"]:active {
+    background-color: #454545;
+  }
 
-/* PAGE ACTU */
+  /* PAGE ACTU */
 
-#main_actu {
-  width: 100%;
-  min-height: 95vh;
-  margin-top: 5vh;
-  color: #383838;
-  display: grid;
-  grid-template-rows: auto 1fr;
-  place-items: center;
-  z-index: -2;
-}
+  #main_actu {
+    width: 100%;
+    min-height: 95vh;
+    margin-top: 5rem;
+    color: #383838;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    place-items: center;
+  }
 
-#main_actu > form {
-  margin: 2rem 0 2rem 0;
-  display: grid;
-  place-items: center;
-  grid-template-columns: repeat(2, auto);
-  grid-template-rows: repeat(3, auto);
-  background-color: rgb(209, 77, 54);
-  width: 90vw;
-  height: 20vh;
-  border-radius: 2rem;
-  box-shadow: 0 1px 1px rgba(0,0,0,0.11), 
-  0 2px 2px rgba(0,0,0,0.11), 
-  0 4px 4px rgba(0,0,0,0.11), 
-  0 6px 8px rgba(0,0,0,0.11),
-  0 8px 16px rgba(0,0,0,0.11);
-}
+  #main_actu > form {
+    margin: 2rem 0 2rem 0;
+    display: grid;
+    place-items: center;
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(3, auto);
+    background-color: rgb(209, 77, 54);
+    width: 90vw;
+    height: 20vh;
+    border-radius: 2rem;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.11), 0 2px 2px rgba(0, 0, 0, 0.11),
+      0 4px 4px rgba(0, 0, 0, 0.11), 0 6px 8px rgba(0, 0, 0, 0.11),
+      0 8px 16px rgba(0, 0, 0, 0.11);
+  }
 
-#main_actu > form > * {
-  margin-bottom: 1rem;
-}
+  #main_actu > form > * {
+    margin-bottom: 1rem;
+  }
 
-#main_actu > form > input[type="file"] {
-  display: none;
-}
+  #main_actu > form > input[type="file"] {
+    display: none;
+  }
 
-#main_actu > form > label {
-  grid-area: 2 / 2 / 2 / 2;
-  display: block;
-  height: 4rem;
-  width: 4rem;
-  border-radius: 50%;
-  cursor: pointer;
-}
+  #main_actu > form > label {
+    grid-area: 2 / 2 / 2 / 2;
+    display: block;
+    height: 4rem;
+    width: 4rem;
+    border-radius: 50%;
+    cursor: pointer;
+  }
 
-#main_actu > form > input[type="text"] {
-  grid-area: 2/1/2/1;
-  outline: none;
-  border: none;
-  border-radius: 0.4rem;
-  font-size: 2rem;
-  text-align: center;
-  color: #202020;
-  padding: 0.2rem;
-}
+  #main_actu > form > input[type="text"] {
+    grid-area: 2/1/2/1;
+    outline: none;
+    border: none;
+    border-radius: 0.4rem;
+    font-size: 2rem;
+    text-align: center;
+    color: #202020;
+    padding: 0.2rem;
+  }
 
-#main_actu > form > input[type="submit"] {
-  grid-area: 3/1/3/3;
-  outline: none;
-  background: none;
-  border: none;
-  background-color: #383838;
-  color: white;
-  text-transform: uppercase;
-  padding: 1rem;
-  font-size: 2rem;
-  border-radius: 1.5rem;
-  font-weight: 700;
-  transition: background-color 0.3s;
-  cursor: pointer;
-}
+  #main_actu > form > input[type="submit"] {
+    grid-area: 3/1/3/3;
+    outline: none;
+    background: none;
+    border: none;
+    background-color: #383838;
+    color: white;
+    text-transform: uppercase;
+    padding: 1rem;
+    font-size: 2rem;
+    border-radius: 1.5rem;
+    font-weight: 700;
+    transition: background-color 0.3s;
+    cursor: pointer;
+  }
 
-#main_actu > form > input[type="submit"]:active,
-#main_actu > form > input[type="submit"]:hover {
-  background-color: #404040;
-}
+  #main_actu > form > input[type="submit"]:active,
+  #main_actu > form > input[type="submit"]:hover {
+    background-color: #404040;
+  }
 
-#main_actu > #container_div_img {
-  display: flex;
-  flex-flow: wrap;
-  justify-content: space-evenly;
-}
-#main_actu > #container_div_img > .div_img {
-  width: 90vw;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: #454545;
-  margin-bottom: 3rem;
-}
+  #main_actu > #container_div_img {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-evenly;
+  }
+  #main_actu > #container_div_img > .div_img {
+    width: 90vw;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #454545;
+    margin-bottom: 3rem;
+  }
 
-#main_actu > #container_div_img > .div_img:nth-of-type(even) {
-  background-color: #606060;
-}
+  #main_actu > #container_div_img > .div_img:nth-of-type(even) {
+    background-color: #606060;
+  }
 
-#main_actu > #container_div_img > .div_img:last-of-type {
-  margin-bottom: 5rem;
-}
+  #main_actu > #container_div_img > .div_img:last-of-type {
+    margin-bottom: 5rem;
+  }
 
-#main_actu > #container_div_img > .div_img > img {
-  width: 80vw;
-  height: auto;
-  margin-top: 1rem;
-}
+  #main_actu > #container_div_img > .div_img > img {
+    width: 80vw;
+    height: auto;
+    margin-top: 1rem;
+  }
 
-#main_actu > #container_div_img > .div_img > p:first-of-type {
-  font-size: 2rem;
-  margin: 1rem 0 1rem 0;
-  color: #cdcdcd;
-}
+  #main_actu > #container_div_img > .div_img > p:first-of-type {
+    font-size: 2rem;
+    margin: 1rem 0 1rem 0;
+    color: #cdcdcd;
+  }
 
-#main_actu > #container_div_img > .div_img > p:first-of-type > span {
-  color: rgb(255, 125, 102);
-  font-size: 1.5rem;
-}
+  #main_actu > #container_div_img > .div_img > p:first-of-type > span {
+    color: rgb(255, 125, 102);
+    font-size: 1.5rem;
+  }
 
-#main_actu > #container_div_img > .div_img > p:last-of-type {
-  font-size: 1.5rem;
-  color: #cdcdcd;
-  margin-bottom: 1rem;
-}
+  #main_actu > #container_div_img > .div_img > p:last-of-type {
+    font-size: 1.5rem;
+    color: #cdcdcd;
+    margin-bottom: 1rem;
+  }
 
-/* PROFIL */
-#main_profil > h2 {
-  text-align: center;
-  font-size: 3rem;
-  color: #383838;
-  margin: 2rem 0 2rem 0;
-}
+  /* PROFIL */
+  #main_profil > h2 {
+    text-align: center;
+    font-size: 3rem;
+    color: #383838;
+    margin: 2rem 0 2rem 0;
+  }
 
-#main_profil > h2 > span {
-  color: rgb(209, 77, 54);
-}
+  #main_profil > h2 > span {
+    color: rgb(209, 77, 54);
+  }
 
-#main_profil > form {
-  background-color: #383838;
-  border-radius: 1rem;
-  display: grid;
-  width: 90vw;
-  place-items: center;
-  text-align: center;
-  margin-bottom: 2rem;
-  box-shadow: 0 1px 1px rgba(0,0,0,0.11), 
-  0 2px 2px rgba(0,0,0,0.11), 
-  0 4px 4px rgba(0,0,0,0.11), 
-  0 6px 8px rgba(0,0,0,0.11),
-  0 8px 16px rgba(0,0,0,0.11);
-}
+  #main_profil > form {
+    background-color: #383838;
+    border-radius: 1rem;
+    display: grid;
+    width: 90vw;
+    place-items: center;
+    text-align: center;
+    margin-bottom: 2rem;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.11), 0 2px 2px rgba(0, 0, 0, 0.11),
+      0 4px 4px rgba(0, 0, 0, 0.11), 0 6px 8px rgba(0, 0, 0, 0.11),
+      0 8px 16px rgba(0, 0, 0, 0.11);
+  }
 
-#main_profil > form > h3 {
-  font-size: 1.9rem;
-  margin: 1rem 0 1rem 0;
-  color: white;
-}
+  #main_profil > form > h3 {
+    font-size: 1.9rem;
+    margin: 1rem 0 1rem 0;
+    color: white;
+  }
 
-#main_profil > form > label {
-  font-size: 1.7rem;
-  margin-bottom: 0.2rem;
-  color: white;
-}
+  #main_profil > form > label {
+    font-size: 1.7rem;
+    margin-bottom: 0.2rem;
+    color: white;
+  }
 
-#main_profil > form > input {
-  margin-bottom: 1rem;
-  color: #383838;
-  border: #383838 solid 0.1rem;
-  padding: 0.3rem;
-  font-size: 1.5rem;
-  text-align: center;
-  outline: none;
-}
+  #main_profil > form > input {
+    margin-bottom: 1rem;
+    color: #383838;
+    border: #383838 solid 0.1rem;
+    padding: 0.3rem;
+    font-size: 1.5rem;
+    text-align: center;
+    outline: none;
+  }
 
-#main_profil > form > input[type="submit"] {
-  margin: 1rem 0 2rem 0;
-  border: none;
-  background-color: rgb(209, 77, 54);
-  color: white;
-  font-weight: 700;
-  padding: 1rem;
-  border-radius: 0.3rem;
-  transition: background-color 0.3s;
-}
+  #main_profil > form > input[type="submit"] {
+    margin: 1rem 0 2rem 0;
+    border: none;
+    background-color: rgb(209, 77, 54);
+    color: white;
+    font-weight: 700;
+    padding: 1rem;
+    border-radius: 0.3rem;
+    transition: background-color 0.3s;
+  }
 
-#main_profil > form > input[type="submit"]:active,
-#main_profil > form > input[type="submit"]:hover {
-  background-color: tomato;
-}
-
-#main_profil > #container_div_img_mod {
-  width: 95vw;
-  display: grid;
-  place-items: center;
-}
-
-#main_profil > #container_div_img_mod > p {
-  text-align: center;
-  font-size: 1.5rem;
-  color: #383838;
-  margin-bottom: 2rem;
-  font-weight: 700;
-}
-
-#main_profil > #container_div_img_mod > .div_img_mod {
-  display: grid;
-  margin-bottom: 2rem;
-}
-
-#main_profil > #container_div_img_mod > .div_img_mod > form {
-  display: grid;
-  place-items: center;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, auto);
-}
-
-#main_profil
-  > #container_div_img_mod
-  > .div_img_mod
-  > form
-  > input[type="submit"] {
-  border: none;
-  background-color: rgb(209, 77, 54);
-  color: white;
-  font-weight: 700;
-  padding: .8rem;
-  width: 10rem;
-  border-radius: 0.3rem;
-  transition: background-color 0.3s;
-}
-#main_profil
-  > #container_div_img_mod
-  > .div_img_mod
-  > form
-  > input[type="submit"]:active,
-#main_profil
-  > #container_div_img_mod
-  > .div_img_mod
-  > form
-  > input[type="submit"]:hover {
+  #main_profil > form > input[type="submit"]:active,
+  #main_profil > form > input[type="submit"]:hover {
     background-color: tomato;
-}
-#main_profil > #container_div_img_mod > .div_img_mod > form > input[type = text]{
-  grid-area: 1/1/1/3;
-  margin: 1rem 0 1rem 0;
-  padding: .5rem;
-  font-size: 1.5rem;
-  text-align: center;
-  color: #383838;
-}
-#main_profil > #container_div_img_mod > .div_img_mod > form > input[type = submit]:first-of-type{
-  grid-area: 2/1/2/1;
-}
-#main_profil > #container_div_img_mod > .div_img_mod > form > input[type = submit]:last-of-type{
-  grid-area: 2/2/2/2;
+  }
+
+  #main_profil > #container_div_img_mod {
+    width: 95vw;
+    display: grid;
+    place-items: center;
+  }
+
+  #main_profil > #container_div_img_mod > p {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #383838;
+    margin-bottom: 2rem;
+    font-weight: 700;
+  }
+
+  #main_profil > #container_div_img_mod > .div_img_mod {
+    display: grid;
+    margin-bottom: 2rem;
+  }
+
+  #main_profil > #container_div_img_mod > .div_img_mod > form {
+    display: grid;
+    place-items: center;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+  }
+
+  #main_profil
+    > #container_div_img_mod
+    > .div_img_mod
+    > form
+    > input[type="submit"] {
+    border: none;
+    background-color: rgb(209, 77, 54);
+    color: white;
+    font-weight: 700;
+    padding: 0.8rem;
+    width: 10rem;
+    border-radius: 0.3rem;
+    transition: background-color 0.3s;
+  }
+  #main_profil
+    > #container_div_img_mod
+    > .div_img_mod
+    > form
+    > input[type="submit"]:active,
+  #main_profil
+    > #container_div_img_mod
+    > .div_img_mod
+    > form
+    > input[type="submit"]:hover {
+    background-color: tomato;
+  }
+  #main_profil
+    > #container_div_img_mod
+    > .div_img_mod
+    > form
+    > input[type="text"] {
+    grid-area: 1/1/1/3;
+    margin: 1rem 0 1rem 0;
+    padding: 0.5rem;
+    font-size: 1.5rem;
+    text-align: center;
+    color: #383838;
+  }
+  #main_profil
+    > #container_div_img_mod
+    > .div_img_mod
+    > form
+    > input[type="submit"]:first-of-type {
+    grid-area: 2/1/2/1;
+  }
+  #main_profil
+    > #container_div_img_mod
+    > .div_img_mod
+    > form
+    > input[type="submit"]:last-of-type {
+    grid-area: 2/2/2/2;
+  }
+
+  #main_profil > #container_div_img_mod > .div_img_mod > img {
+    width: 80vw;
+    height: auto;
+  }
+
+  /* ADMIN */
+
+  #main_admin h2 {
+    width: 100%;
+    font-size: 3rem;
+    margin: 3rem 0 3rem 0;
+    text-align: center;
+    position: relative;
+    display: grid;
+    z-index: -1;
+  }
+
+  #main_admin h2::after {
+    position: absolute;
+    content: "";
+    width: 50%;
+    height: 0.2rem;
+    background-color: #303030;
+    place-self: end;
+    right: 25%;
+    bottom: -0.5rem;
+    z-index: -1;
+  }
+
+  /* FORM AJOUT USER */
+  #main_admin > form {
+    width: 95%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(5, auto);
+    place-items: center;
+    background-color: #383838;
+    color: white;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.11), 0 2px 2px rgba(0, 0, 0, 0.11),
+      0 4px 4px rgba(0, 0, 0, 0.11), 0 6px 8px rgba(0, 0, 0, 0.11),
+      0 8px 16px rgba(0, 0, 0, 0.11);
+    border-radius: 0.5rem;
+  }
+
+  #main_admin > form > * {
+    margin: 1rem 0 1rem 0;
+  }
+
+  #main_admin > form > label {
+    font-size: 1.7rem;
+  }
+
+  #main_admin > form > label:first-of-type,
+  #main > form > input:first-of-type {
+    margin: 2rem 0 1rem 0;
+  }
+
+  #main_admin > form > label:last-of-type {
+    grid-area: 4/1/4/1;
+  }
+
+  #main_admin > form > input {
+    outline: none;
+    border: none;
+    width: 90%;
+    font-size: 2rem;
+    padding: 0.5rem;
+    text-align: center;
+    color: #383838;
+  }
+
+  #main_admin > form > select {
+    grid-area: 4/2/4/2;
+    width: 90%;
+    height: 70%;
+    font-size: 2rem;
+  }
+
+  #main_admin > form > input[type="submit"] {
+    grid-area: 5/1/5/3;
+    margin: 2rem 0 2rem 0;
+    width: 50%;
+    font-weight: 700;
+    font-size: 2rem;
+    color: #cdcdcd;
+    text-transform: uppercase;
+    background: none;
+    transition: ease-in-out 0.3s;
+  }
+
+  #main_admin > form > input[type="submit"]:active,
+  #main_admin > form > input[type="submit"]:hover {
+    color: white;
+  }
+  /* FIN FORM AJOUT USER */
+
+  #container_main_admin {
+    display: grid;
+  }
+
+  #search_bar,
+  #img_search_bar {
+    display: grid;
+    place-items: center;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 2rem;
+  }
+
+  #search_bar > p,
+  #img_search_bar > p {
+    font-size: 1.5rem;
+    text-align: center;
+    font-weight: 700;
+    margin: 0 1rem 0 1rem;
+  }
+
+  #search_bar > input,
+  #img_search_bar > input {
+    width: 90%;
+    font-size: 1.7rem;
+    padding: 0.5rem;
+    border-radius: 0;
+    border: none;
+    border: 1px solid #383838;
+    transition: ease-in-out border 0.3s;
+  }
+
+  #search_bar > input:focus,
+  #img_search_bar > input:focus {
+    border: tomato 1px solid;
+  }
+
+  #user_container_main_admin,
+  #img_container_main_admin {
+    display: grid;
+    place-items: center;
+  }
+
+  #user_container_main_admin > div,
+  #img_container_main_admin > div {
+    width: 90%;
+    display: none;
+    background-color: #383838;
+    margin-bottom: 2rem;
+  }
+
+  #user_container_main_admin > div > form {
+    display: grid;
+    place-items: center;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(5, auto);
+    color: white;
+  }
+
+  #user_container_main_admin > div > form > p {
+    grid-area: 1/1/1/3;
+    margin-top: 1rem;
+    font-size: 2rem;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  #user_container_main_admin > div > form > p::after,
+  #user_container_main_admin > div > form > p::before {
+    content: " - ";
+  }
+
+  #user_container_main_admin > div > form > label {
+    font-size: 1.5rem;
+  }
+
+  #user_container_main_admin > div > form > * {
+    margin: 1rem 0 1rem 0;
+  }
+
+  #user_container_main_admin > div > form > input[type="text"],
+  #user_container_main_admin > div > form > input[type="email"] {
+    text-align: center;
+    margin-right: 1rem;
+    width: 90%;
+  }
+
+  #user_container_main_admin > div > form > input[type="text"],
+  #user_container_main_admin > div > form > input[type="email"],
+  #user_container_main_admin > div > form > select {
+    font-size: 1.5rem;
+    padding: 0.2rem;
+    outline: none;
+  }
+
+  #user_container_main_admin > div > form > input[type="submit"] {
+    margin-bottom: 2rem;
+    border: none;
+    outline: none;
+    background: none;
+    color: #cdcdcd;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    transition: ease-in-out 0.3s;
+    margin-top: 2rem;
+  }
+
+  #user_container_main_admin > div > form > input[type="submit"]:hover,
+  #user_container_main_admin > div > form > input[type="submit"]:active {
+    color: white;
+  }
+
+  #user_container_main_admin > div > form > input[type="submit"]:first-of-type {
+    grid-area: 6/2/6/2;
+  }
+
+  #user_container_main_admin > div > form > input[type="submit"]:last-of-type {
+    grid-area: 6/1/6/1;
+    color: tomato;
+  }
+
+  #user_container_main_admin
+    > div
+    > form
+    > input[type="submit"]:last-of-type:hover,
+  #user_container_main_admin
+    > div
+    > form
+    > input[type="submit"]:last-of-type:active {
+    color: rgb(197, 77, 56);
+  }
+
+  /* IMG ADMIN */
+
+  #img_container_main_admin > div > form {
+    display: grid;
+    grid-template-rows: repeat(4, auto);
+    grid-template-columns: repeat(2, 1fr);
+    place-items: center;
+    color: white;
+  }
+
+  #img_container_main_admin > div > form > p {
+    grid-area: 1/1/1/3;
+    margin: 1rem 0 1rem 0;
+    font-size: 2rem;
+    font-weight: 700;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    place-items: center;
+  }
+
+  #img_container_main_admin > div > form > p > span {
+    color: tomato;
+    font-size: 1.5rem;
+    margin-left: 1rem;
+  }
+
+  #img_container_main_admin > div > form > img {
+    grid-area: 2/1/2/3;
+    width: 80%;
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 2rem;
+  }
+
+  #img_container_main_admin > div > form > label {
+    font-size: 1.5rem;
+  }
+
+  #img_container_main_admin > div > form > input[type="text"] {
+    text-align: center;
+    width: 90%;
+    color: #383838;
+    font-size: 1.5rem;
+    padding: 0.2rem;
+    outline: none;
+    border: 1px #383838 solid;
+  }
+
+  #img_container_main_admin > div > form > input[type="text"]:focus {
+    border: 1px tomato solid;
+  }
+
+  #img_container_main_admin > div > form > input[type="submit"] {
+    margin-bottom: 2rem;
+    border: none;
+    outline: none;
+    background: none;
+    color: #cdcdcd;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    transition: ease-in-out 0.3s;
+    margin-top: 2rem;
+  }
+
+  #img_container_main_admin > form > input[type="submit"]:active,
+  #main_admin > form > input[type="submit"]:hover {
+    color: white;
+  }
+  #img_container_main_admin > div > form > input[type="submit"]:first-of-type {
+    grid-area: 4/2/4/2;
+  }
+
+  #img_container_main_admin > div > form > input[type="submit"]:last-of-type {
+    color: tomato;
+    grid-area: 4/1/4/1;
+  }
+
+  #img_container_main_admin
+    > div
+    > form
+    > input[type="submit"]:last-of-type:active,
+  #img_container_main_admin
+    > div
+    > form
+    > input[type="submit"]:last-of-type:hover {
+    color: rgb(197, 77, 56);
+  }
 }
 
-#main_profil > #container_div_img_mod > .div_img_mod > img {
-  width: 80vw;
-  height: auto;
-}
+/* DESKTOP */
+@media (min-width: 768px) {
+  main {
+    max-width: 75rem;
+    margin-top: 5vh;
+    min-height: 95vh;
+    display: grid;
+    place-items: center;
+    color: #383838;
+  }
 
-/* ADMIN */
+  /* CONNEXION CONNEXION CONNEXION CONNEXION CONNEXION*/
 
-#main_admin h2{
-  width: 100%;
-  font-size: 3rem;
-  margin: 3rem 0 3rem 0;
-  text-align: center;
-  position: relative;
-  display: grid;
-  z-index: -1;
-}
+  #main_connexion {
+    margin-top: 0;
+  }
 
-#main_admin h2::after {
-  position: absolute;
-  content: "";
-  width: 50%;
-  height: .2rem;
-  background-color: #303030;
-  place-self: end;
-  right: 25%;
-  bottom: -.5rem;
-  z-index: -1;
-}
+  #main_connexion > h1 {
+    margin-top: 2rem;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+  }
 
-/* FORM AJOUT USER */
-#main_admin > form {
-  width: 95%;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(5, auto);
-  place-items: center;
-  background-color: #383838;
-  color: white;
-  box-shadow: 0 1px 1px rgba(0,0,0,0.11), 
-  0 2px 2px rgba(0,0,0,0.11), 
-  0 4px 4px rgba(0,0,0,0.11), 
-  0 6px 8px rgba(0,0,0,0.11),
-  0 8px 16px rgba(0,0,0,0.11);
-  border-radius: .5rem;
-}
+  #main_connexion > p {
+    font-size: 1.7rem;
+    margin: 2rem;
+    text-align: center;
+  }
 
-#main_admin > form > * {
-  margin: 1rem 0 1rem 0;
-}
+  #main_connexion > form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+  }
 
-#main_admin > form > label {
-  font-size: 1.7rem;
-}
+  #main_connexion > form > label {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
 
-#main_admin > form > label:first-of-type, #main > form > input:first-of-type {
-  margin: 2rem 0 1rem 0;
-}
+  #main_connexion > form > input[type="text"],
+  #main_connexion > form > input[type="email"],
+  #main_connexion > form > input[type="password"] {
+    margin-bottom: 3rem;
+    outline: none;
+    border: 1px #383838 solid;
+    width: 25rem;
+    font-size: 2rem;
+    color: #383838;
+    text-align: center;
+  }
 
-#main_admin > form > label:last-of-type {
-  grid-area: 4/1/4/1;
-}
+  #main_connexion > form > input[type="password"] {
+    margin-bottom: 6rem;
+  }
 
-#main_admin > form > input {
-  outline: none;
-  border: none;
-  width: 90%;
-  font-size: 2rem;
-  padding: .5rem;
-  text-align: center;
-  color: #383838;
-}
+  #main_connexion > form > input[type="submit"] {
+    height: 4rem;
+    width: 20rem;
+    border: none;
+    background-color: #383838;
+    text-transform: uppercase;
+    color: white;
+    font-size: 1.7rem;
+    font-weight: 700;
+    border-radius: 1rem;
+    place-self: center;
+    transition: background-color 0.3s;
+  }
 
-#main_admin > form > select {
-  grid-area: 4/2/4/2;
-  width: 90%;
-  height: 70%;
-  font-size: 2rem;
-}
+  #main_connexion > form > input[type="submit"]:active {
+    background-color: #454545;
+  }
 
-#main_admin > form > input[type = submit]{
-  grid-area: 5/1/5/3;
-  margin: 2rem 0 2rem 0;
-  width: 50%;
-  font-weight: 700;
-  font-size: 2rem;
-  color: #cdcdcd;
-  text-transform: uppercase;
-  background: none;
-  transition: ease-in-out .3s;
-}
+  /* PAGE ACTU */
 
-#main_admin > form > input[type = submit]:active, #main_admin > form > input[type = submit]:hover {
-  color: white;
-}
-/* FIN FORM AJOUT USER */
+  #main_actu {
+    width: 75rem;
+    min-height: 95vh;
+    margin-top: 5vh;
+    color: #383838;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    place-items: center;
+  }
 
-#container_main_admin {
-  display: grid;
-}
+  #main_actu > form {
+    margin: 2rem 0 2rem 0;
+    display: grid;
+    place-items: center;
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(3, auto);
+    background-color: rgb(209, 77, 54);
+    width: 90%;
+    height: 20vh;
+    border-radius: 2rem;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.11), 0 2px 2px rgba(0, 0, 0, 0.11),
+      0 4px 4px rgba(0, 0, 0, 0.11), 0 6px 8px rgba(0, 0, 0, 0.11),
+      0 8px 16px rgba(0, 0, 0, 0.11);
+  }
 
-#search_bar, #img_search_bar {
-  display: grid;
-  place-items: center;
-  grid-template-columns: 1fr 1fr;
-  margin-bottom: 2rem;
-}
+  #main_actu > form > * {
+    margin-bottom: 1rem;
+  }
 
-#search_bar > p, #img_search_bar > p {
-  font-size: 1.5rem;
-  text-align: center;
-  font-weight: 700;
-  margin: 0 1rem 0 1rem;
-}
+  #main_actu > form > input[type="file"] {
+    display: none;
+  }
 
-#search_bar > input, #img_search_bar > input {
-  width: 90%;
-  font-size: 1.7rem;
-  padding: .5rem;
-  border-radius: 0;
-  border: none;
-  border: 1px solid #383838;
-  transition: ease-in-out border .3s;
-}
+  #main_actu > form > label {
+    grid-area: 2 / 2 / 2 / 2;
+    display: block;
+    height: 4rem;
+    width: 4rem;
+    border-radius: 50%;
+    cursor: pointer;
+  }
 
-#search_bar > input:focus, #img_search_bar > input:focus {
-  border: tomato 1px solid;
-}
+  #main_actu > form > input[type="text"] {
+    grid-area: 2/1/2/1;
+    outline: none;
+    border: none;
+    border-radius: 0.4rem;
+    font-size: 2rem;
+    text-align: center;
+    color: #202020;
+    padding: 0.2rem;
+  }
 
-#user_container_main_admin, #img_container_main_admin {
-  display: grid;
-  place-items: center;
-}
+  #main_actu > form > input[type="submit"] {
+    grid-area: 3/1/3/3;
+    outline: none;
+    background: none;
+    border: none;
+    background-color: #383838;
+    color: white;
+    text-transform: uppercase;
+    padding: 1rem;
+    font-size: 2rem;
+    border-radius: 1.5rem;
+    font-weight: 700;
+    transition: background-color 0.3s;
+    cursor: pointer;
+  }
 
-#user_container_main_admin > div, #img_container_main_admin > div{
-  width: 90%;
-  display: none;
-  background-color: #383838;
-  margin-bottom: 2rem;
-}
+  #main_actu > form > input[type="submit"]:active,
+  #main_actu > form > input[type="submit"]:hover {
+    background-color: #404040;
+  }
 
-#user_container_main_admin > div > form {
-  display: grid;
-  place-items: center;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(5, auto);
-  color: white;
-}
+  #main_actu > #container_div_img {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-evenly;
+  }
+  #main_actu > #container_div_img > .div_img {
+    width: 90%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #454545;
+    margin-bottom: 3rem;
+  }
 
-#user_container_main_admin > div > form > p {
-  grid-area: 1/1/1/3;
-  margin-top: 1rem;
-  font-size: 2rem;
-  text-transform: uppercase;
-  font-weight: 700;
-}
+  #main_actu > #container_div_img > .div_img:nth-of-type(even) {
+    background-color: #606060;
+  }
 
-#user_container_main_admin > div > form > p::after, #user_container_main_admin > div > form > p::before {
-  content: " - ";
-}
+  #main_actu > #container_div_img > .div_img:last-of-type {
+    margin-bottom: 5rem;
+  }
 
-#user_container_main_admin > div > form > label {
-  font-size: 1.5rem;
-}
+  #main_actu > #container_div_img > .div_img > img {
+    width: 80%;
+    height: auto;
+    margin-top: 1rem;
+  }
 
-#user_container_main_admin > div > form > *{
-  margin: 1rem 0 1rem 0;
-}
+  #main_actu > #container_div_img > .div_img > p:first-of-type {
+    font-size: 2rem;
+    margin: 1rem 0 1rem 0;
+    color: #cdcdcd;
+  }
 
-#user_container_main_admin > div > form > input[type = text], #user_container_main_admin > div > form > input[type = email]{
-  text-align: center;
-  margin-right: 1rem;
-  width: 90%;
-}
+  #main_actu > #container_div_img > .div_img > p:first-of-type > span {
+    color: rgb(255, 125, 102);
+    font-size: 1.5rem;
+  }
 
-#user_container_main_admin > div > form > input[type = text], #user_container_main_admin > div > form > input[type = email], #user_container_main_admin > div > form > select {
-  font-size: 1.5rem;
-  padding: .2rem;
-  outline: none;
-}
+  #main_actu > #container_div_img > .div_img > p:last-of-type {
+    font-size: 1.5rem;
+    color: #cdcdcd;
+    margin-bottom: 1rem;
+  }
 
-#user_container_main_admin > div > form > input[type = submit]{
-  margin-bottom: 2rem;
-  border: none;
-  outline: none;
-  background: none;
-  color: #cdcdcd;
-  text-align: center;
-  font-weight: 700;
-  font-size: 1.5rem;
-  text-transform: uppercase;
-  transition: ease-in-out .3s;
-  margin-top: 2rem;
-}
+  /* PROFIL */
+  #main_profil > h2 {
+    text-align: center;
+    font-size: 3rem;
+    color: #383838;
+    margin: 2rem 0 2rem 0;
+  }
 
-#user_container_main_admin > div > form > input[type = submit]:hover, #user_container_main_admin > div > form > input[type = submit]:active{
-  color: white;
-}
+  #main_profil > h2 > span {
+    color: rgb(209, 77, 54);
+  }
 
-#user_container_main_admin > div > form > input[type = submit]:first-of-type {
-  grid-area: 6/2/6/2;
-}
+  #main_profil > form {
+    background-color: #383838;
+    border-radius: 1rem;
+    display: grid;
+    width: 90%;
+    place-items: center;
+    text-align: center;
+    margin-bottom: 2rem;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.11), 0 2px 2px rgba(0, 0, 0, 0.11),
+      0 4px 4px rgba(0, 0, 0, 0.11), 0 6px 8px rgba(0, 0, 0, 0.11),
+      0 8px 16px rgba(0, 0, 0, 0.11);
+  }
 
-#user_container_main_admin > div > form > input[type = submit]:last-of-type {
-  grid-area: 6/1/6/1;
-  color: tomato;
-}
+  #main_profil > form > h3 {
+    font-size: 1.9rem;
+    margin: 1rem 0 1rem 0;
+    color: white;
+  }
 
-#user_container_main_admin > div > form > input[type = submit]:last-of-type:hover, #user_container_main_admin > div > form > input[type = submit]:last-of-type:active {
-  color: rgb(197, 77, 56);
-}
+  #main_profil > form > label {
+    font-size: 1.7rem;
+    margin-bottom: 0.2rem;
+    color: white;
+  }
 
+  #main_profil > form > input {
+    margin-bottom: 1rem;
+    color: #383838;
+    border: #383838 solid 0.1rem;
+    padding: 0.3rem;
+    font-size: 1.5rem;
+    text-align: center;
+    outline: none;
+  }
 
+  #main_profil > form > input[type="submit"] {
+    margin: 1rem 0 2rem 0;
+    border: none;
+    background-color: rgb(209, 77, 54);
+    color: white;
+    font-weight: 700;
+    padding: 1rem;
+    border-radius: 0.3rem;
+    transition: background-color 0.3s;
+  }
 
-/* IMG ADMIN */
-#img_container_main_admin > div {
-  display: grid;
-}
+  #main_profil > form > input[type="submit"]:active,
+  #main_profil > form > input[type="submit"]:hover {
+    background-color: tomato;
+  }
 
-#img_container_main_admin > div > form {
-  display: grid;
-  grid-template-rows: repeat(4, auto);
-  grid-template-columns: repeat(2, 1fr);
-  place-items: center;
-  color: white;
-}
+  #main_profil > #container_div_img_mod {
+    width: 75rem;
+    display: grid;
+    place-items: center;
+  }
 
-#img_container_main_admin > div > form > p {
-  grid-area: 1/1/1/3;
-  margin: 1rem 0 1rem 0;
-  font-size: 2rem;
-  font-weight: 700;
-  display: grid;
-  grid-template-columns: repeat(2, auto);
-  place-items: center;
-}
+  #main_profil > #container_div_img_mod > p {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #383838;
+    margin-bottom: 2rem;
+    font-weight: 700;
+  }
 
-#img_container_main_admin > div > form > p > span {
-  color: tomato;
-  font-size: 1.5rem;
-  margin-left: 1rem;
-}
+  #main_profil > #container_div_img_mod > .div_img_mod {
+    display: grid;
+    place-items: center;
+    margin-bottom: 2rem;
+  }
 
-#img_container_main_admin > div > form > img {
-  grid-area: 2/1/2/3;
-  width: 80%;
-  max-width: 100%;
-  height: auto;
-  margin-bottom: 2rem;
-}
+  #main_profil > #container_div_img_mod > .div_img_mod > form {
+    display: grid;
+    place-items: center;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+  }
 
-#img_container_main_admin > div > form > label {
-  font-size: 1.5rem;
-}
+  #main_profil
+    > #container_div_img_mod
+    > .div_img_mod
+    > form
+    > input[type="submit"] {
+    border: none;
+    background-color: rgb(209, 77, 54);
+    color: white;
+    font-weight: 700;
+    padding: 0.8rem;
+    width: 10rem;
+    border-radius: 0.3rem;
+    transition: background-color 0.3s;
+  }
+  #main_profil
+    > #container_div_img_mod
+    > .div_img_mod
+    > form
+    > input[type="submit"]:active,
+  #main_profil
+    > #container_div_img_mod
+    > .div_img_mod
+    > form
+    > input[type="submit"]:hover {
+    background-color: tomato;
+  }
+  #main_profil
+    > #container_div_img_mod
+    > .div_img_mod
+    > form
+    > input[type="text"] {
+    grid-area: 1/1/1/3;
+    margin: 1rem 0 1rem 0;
+    padding: 0.5rem;
+    font-size: 1.5rem;
+    text-align: center;
+    color: #383838;
+  }
+  #main_profil
+    > #container_div_img_mod
+    > .div_img_mod
+    > form
+    > input[type="submit"]:first-of-type {
+    grid-area: 2/1/2/1;
+  }
+  #main_profil
+    > #container_div_img_mod
+    > .div_img_mod
+    > form
+    > input[type="submit"]:last-of-type {
+    grid-area: 2/2/2/2;
+  }
 
-#img_container_main_admin > div > form > input[type = text]{
-  text-align: center;
-  width: 90%;
-  color: #383838;
-  font-size: 1.5rem;
-  padding: .2rem;
-  outline: none;
-  border: 1px #383838 solid;
-}
+  #main_profil > #container_div_img_mod > .div_img_mod > img {
+    width: 80%;
+    height: auto;
+  }
 
-#img_container_main_admin > div > form > input[type = text]:focus {
-  border: 1px tomato solid;
-}
+  /* ADMIN */
 
-#img_container_main_admin > div > form > input[type = submit]{
-  margin-bottom: 2rem;
-  border: none;
-  outline: none;
-  background: none;
-  color: #cdcdcd;
-  text-align: center;
-  font-weight: 700;
-  font-size: 1.5rem;
-  text-transform: uppercase;
-  transition: ease-in-out .3s;
-  margin-top: 2rem;
-}
+  #main_admin h2 {
+    width: 100%;
+    font-size: 3rem;
+    margin: 3rem 0 3rem 0;
+    text-align: center;
+    position: relative;
+    display: grid;
+    z-index: -1;
+  }
 
-#img_container_main_admin > form > input[type = submit]:active, #main_admin > form > input[type = submit]:hover {
-  color: white;
-}
-#img_container_main_admin > div > form > input[type = submit]:first-of-type {
-  grid-area: 4/2/4/2;
-}
+  #main_admin h2::after {
+    position: absolute;
+    content: "";
+    width: 50%;
+    height: 0.2rem;
+    background-color: #303030;
+    place-self: end;
+    right: 25%;
+    bottom: -0.5rem;
+    z-index: -1;
+  }
 
-#img_container_main_admin > div > form > input[type = submit]:last-of-type {
-  color: tomato;
-  grid-area: 4/1/4/1;
-}
+  /* FORM AJOUT USER */
+  #main_admin > form {
+    width: 95%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(5, auto);
+    place-items: center;
+    background-color: #383838;
+    color: white;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.11), 0 2px 2px rgba(0, 0, 0, 0.11),
+      0 4px 4px rgba(0, 0, 0, 0.11), 0 6px 8px rgba(0, 0, 0, 0.11),
+      0 8px 16px rgba(0, 0, 0, 0.11);
+    border-radius: 0.5rem;
+  }
 
-#img_container_main_admin > div > form > input[type = submit]:last-of-type:active, #img_container_main_admin > div > form > input[type = submit]:last-of-type:hover {
-  color: rgb(197, 77, 56);
+  #main_admin > form > * {
+    margin: 1rem 0 1rem 0;
+  }
+
+  #main_admin > form > label {
+    font-size: 1.7rem;
+  }
+
+  #main_admin > form > label:first-of-type,
+  #main > form > input:first-of-type {
+    margin: 2rem 0 1rem 0;
+  }
+
+  #main_admin > form > label:last-of-type {
+    grid-area: 4/1/4/1;
+  }
+
+  #main_admin > form > input {
+    outline: none;
+    border: none;
+    width: 90%;
+    font-size: 2rem;
+    padding: 0.5rem;
+    text-align: center;
+    color: #383838;
+  }
+
+  #main_admin > form > select {
+    grid-area: 4/2/4/2;
+    width: 90%;
+    height: 70%;
+    font-size: 2rem;
+  }
+
+  #main_admin > form > input[type="submit"] {
+    grid-area: 5/1/5/3;
+    margin: 2rem 0 2rem 0;
+    width: 50%;
+    font-weight: 700;
+    font-size: 2rem;
+    color: #cdcdcd;
+    text-transform: uppercase;
+    background: none;
+    transition: ease-in-out 0.3s;
+  }
+
+  #main_admin > form > input[type="submit"]:active,
+  #main_admin > form > input[type="submit"]:hover {
+    color: white;
+  }
+  /* FIN FORM AJOUT USER */
+
+  #container_main_admin {
+    display: grid;
+  }
+
+  #search_bar,
+  #img_search_bar {
+    display: grid;
+    place-items: center;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 2rem;
+  }
+
+  #search_bar > p,
+  #img_search_bar > p {
+    font-size: 1.5rem;
+    text-align: center;
+    font-weight: 700;
+    margin: 0 1rem 0 1rem;
+  }
+
+  #search_bar > input,
+  #img_search_bar > input {
+    width: 90%;
+    font-size: 1.7rem;
+    padding: 0.5rem;
+    border-radius: 0;
+    border: none;
+    border: 1px solid #383838;
+    transition: ease-in-out border 0.3s;
+  }
+
+  #search_bar > input:focus,
+  #img_search_bar > input:focus {
+    border: tomato 1px solid;
+  }
+
+  #user_container_main_admin,
+  #img_container_main_admin {
+    display: grid;
+    place-items: center;
+  }
+
+  #user_container_main_admin > div,
+  #img_container_main_admin > div {
+    width: 90%;
+    display: none;
+    background-color: #383838;
+    margin-bottom: 2rem;
+  }
+
+  #user_container_main_admin > div > form {
+    display: grid;
+    place-items: center;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(5, auto);
+    color: white;
+  }
+
+  #user_container_main_admin > div > form > p {
+    grid-area: 1/1/1/3;
+    margin-top: 1rem;
+    font-size: 2rem;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  #user_container_main_admin > div > form > p::after,
+  #user_container_main_admin > div > form > p::before {
+    content: " - ";
+  }
+
+  #user_container_main_admin > div > form > label {
+    font-size: 1.5rem;
+  }
+
+  #user_container_main_admin > div > form > * {
+    margin: 1rem 0 1rem 0;
+  }
+
+  #user_container_main_admin > div > form > input[type="text"],
+  #user_container_main_admin > div > form > input[type="email"] {
+    text-align: center;
+    margin-right: 1rem;
+    width: 90%;
+  }
+
+  #user_container_main_admin > div > form > input[type="text"],
+  #user_container_main_admin > div > form > input[type="email"],
+  #user_container_main_admin > div > form > select {
+    font-size: 1.5rem;
+    padding: 0.2rem;
+    outline: none;
+  }
+
+  #user_container_main_admin > div > form > input[type="submit"] {
+    margin-bottom: 2rem;
+    border: none;
+    outline: none;
+    background: none;
+    color: #cdcdcd;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    transition: ease-in-out 0.3s;
+    margin-top: 2rem;
+  }
+
+  #user_container_main_admin > div > form > input[type="submit"]:hover,
+  #user_container_main_admin > div > form > input[type="submit"]:active {
+    color: white;
+  }
+
+  #user_container_main_admin > div > form > input[type="submit"]:first-of-type {
+    grid-area: 6/2/6/2;
+  }
+
+  #user_container_main_admin > div > form > input[type="submit"]:last-of-type {
+    grid-area: 6/1/6/1;
+    color: tomato;
+  }
+
+  #user_container_main_admin
+    > div
+    > form
+    > input[type="submit"]:last-of-type:hover,
+  #user_container_main_admin
+    > div
+    > form
+    > input[type="submit"]:last-of-type:active {
+    color: rgb(197, 77, 56);
+  }
+
+  /* IMG ADMIN */
+
+  #img_container_main_admin > div > form {
+    display: grid;
+    grid-template-rows: repeat(4, auto);
+    grid-template-columns: repeat(2, 1fr);
+    place-items: center;
+    color: white;
+  }
+
+  #img_container_main_admin > div > form > p {
+    grid-area: 1/1/1/3;
+    margin: 1rem 0 1rem 0;
+    font-size: 2rem;
+    font-weight: 700;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    place-items: center;
+  }
+
+  #img_container_main_admin > div > form > p > span {
+    color: tomato;
+    font-size: 1.5rem;
+    margin-left: 1rem;
+  }
+
+  #img_container_main_admin > div > form > img {
+    grid-area: 2/1/2/3;
+    width: 80%;
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 2rem;
+  }
+
+  #img_container_main_admin > div > form > label {
+    font-size: 1.5rem;
+  }
+
+  #img_container_main_admin > div > form > input[type="text"] {
+    text-align: center;
+    width: 90%;
+    color: #383838;
+    font-size: 1.5rem;
+    padding: 0.2rem;
+    outline: none;
+    border: 1px #383838 solid;
+  }
+
+  #img_container_main_admin > div > form > input[type="text"]:focus {
+    border: 1px tomato solid;
+  }
+
+  #img_container_main_admin > div > form > input[type="submit"] {
+    margin-bottom: 2rem;
+    border: none;
+    outline: none;
+    background: none;
+    color: #cdcdcd;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    transition: ease-in-out 0.3s;
+    margin-top: 2rem;
+  }
+
+  #img_container_main_admin > form > input[type="submit"]:active,
+  #main_admin > form > input[type="submit"]:hover {
+    color: white;
+  }
+  #img_container_main_admin > div > form > input[type="submit"]:first-of-type {
+    grid-area: 4/2/4/2;
+  }
+
+  #img_container_main_admin > div > form > input[type="submit"]:last-of-type {
+    color: tomato;
+    grid-area: 4/1/4/1;
+  }
+
+  #img_container_main_admin
+    > div
+    > form
+    > input[type="submit"]:last-of-type:active,
+  #img_container_main_admin
+    > div
+    > form
+    > input[type="submit"]:last-of-type:hover {
+    color: rgb(197, 77, 56);
+  }
 }

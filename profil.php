@@ -54,7 +54,7 @@ if (isset($_POST['profil_mod'])) {
     $user_id = $_SESSION['user_id'];
     $user_pseudo = $_POST['user_pseudo_profil_mod'];
     $user_mail = $_POST['user_mail_profil_mod'];
-    $user_mdp = $_POST['user_mdp_profil_mod'];
+    $user_mdp = password_hash($_POST['user_mdp_profil_mod'], PASSWORD_DEFAULT);
     
     try {
         $pdo = new PDO(DB_DRIVER . ":host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=" . DB_CHARSET, DB_LOGIN, DB_PASS, DB_OPTIONS);
@@ -93,6 +93,8 @@ if (isset($_POST['profil_mod'])) {
     <meta name="format-detection" content="telephone=no">
     <!-- Links -->
     <?php echo '<link rel="stylesheet" href="src/css/style.css?' . filemtime('src/css/style.css') . '" />'; ?>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 
 <body>
@@ -126,28 +128,28 @@ if (isset($_POST['profil_mod'])) {
         </div>
     </nav>
     <main id="main_profil">
-        <h2>Profil de <span><?php echo ($_SESSION['user_pseudo']); ?></span></h2>
+        <h2>Profil de <span><?php echo (htmlentities($_SESSION['user_pseudo'], ENT_QUOTES)); ?></span></h2>
         <form action="profil.php" method="POST">
             <h3>Modifier mes informations</h3>
             <label for="user_mail_profil_mod">Adresse email</label>
-            <input type="email" name="user_mail_profil_mod" value="<?php echo ($_SESSION['user_mail']); ?>" required>
+            <input type="email" name="user_mail_profil_mod" value="<?php echo (htmlentities($_SESSION['user_mail'], ENT_QUOTES)); ?>" required>
             <label for="user_pseudo_profil_mod">Pseudonyme</label>
-            <input type="text" name="user_pseudo_profil_mod" value="<?php echo ($_SESSION['user_pseudo']); ?>" required>
+            <input type="text" name="user_pseudo_profil_mod" value="<?php echo (htmlentities($_SESSION['user_pseudo'], ENT_QUOTES)); ?>" required>
             <label for="user_mdp_profil_mod">Mot de passe</label>
             <input type="password" name="user_mdp_profil_mod" required>
             <input type="submit" name="profil_mod" value="Modifier">
         </form>
         <div id="container_div_img_mod">
-            <p>Vous avez upload <?php echo ($res); ?> image(s)</p>
+            <p>Vous avez upload <?php echo (htmlentities($res, ENT_QUOTES)); ?> image(s)</p>
             <?php
             foreach ($image as $key => $value) {
             ?>
                 <div class="div_img_mod">
-                    <img src="<?php echo ($value['img_url']); ?>" alt="<?php echo ($value['img_titre']); ?>">
+                    <img src="<?php echo (htmlentities($value['img_url'], ENT_QUOTES)); ?>" alt="<?php echo (htmlentities($value['img_titre'], ENT_QUOTES)); ?>">
                     <form action="profil.php" method="POST">
-                        <input type="text" name="img_titre_mod" value="<?php echo ($value['img_titre']); ?>">
-                        <input type="hidden" name="img_id" value="<?php echo ($value['img_id']); ?>">
-                        <input type="hidden" name="img_url" value="<?php echo ($value['img_url']); ?>">
+                        <input type="text" name="img_titre_mod" value="<?php echo (htmlentities($value['img_titre'], ENT_QUOTES)); ?>">
+                        <input type="hidden" name="img_id" value="<?php echo (htmlentities($value['img_id'], ENT_QUOTES)); ?>">
+                        <input type="hidden" name="img_url" value="<?php echo (htmlentities($value['img_url'], ENT_QUOTES)); ?>">
                         <input type="submit" name="img_mod" value="Modifier">
                         <input type="submit" name="img_supr" value="Supprimer">
                     </form>
